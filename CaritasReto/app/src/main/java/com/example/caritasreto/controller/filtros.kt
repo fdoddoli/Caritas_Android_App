@@ -146,8 +146,8 @@ class filtros : Fragment() {
 
     private fun assignClickListeners(){
         //Enviar arreglo de categorías a Home
-        val bundle = Bundle()
-        bundle.putStringArrayList("departamentos", ArrayList(filtro))
+//        val bundle = Bundle()
+//        bundle.putStringArrayList("departamentos", ArrayList(filtro))
 
         //Cerrar filter
 //        aplicarBtn.setOnClickListener{
