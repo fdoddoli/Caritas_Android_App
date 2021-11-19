@@ -36,10 +36,10 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var bundle = Bundle()
-
-        departamentos = bundle.getStringArrayList("departamentos") as ArrayList<String>
-        Toast.makeText(context, "list" + departamentos[0], Toast.LENGTH_SHORT).show()
+//        var bundle = Bundle()
+//
+//        departamentos = bundle.getStringArrayList("departamentos") as ArrayList<String>
+//        Toast.makeText(context, "list" + departamentos[0], Toast.LENGTH_SHORT).show()
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
