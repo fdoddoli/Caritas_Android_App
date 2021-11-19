@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentFiltro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.filtros">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FILTRO"
+        android:textColor="@color/negro"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.007" />
+
+    <ImageView
+        android:id="@+id/banco_medicamentos"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_2"
+        app:layout_constraintEnd_toStartOf="@+id/banco_ropa"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/banco_alimentos"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/icono_2" />
+
+    <ImageView
+        android:id="@+id/banco_alimentos"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_1"
+        app:layout_constraintEnd_toStartOf="@+id/banco_medicamentos"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/icono_1" />
+
+    <ImageView
+        android:id="@+id/banco_ropa"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_3"
+        app:layout_constraintEnd_toStartOf="@+id/caritas_mty"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/banco_medicamentos"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/icono_3" />
+
+    <ImageView
+        android:id="@+id/caritas_mty"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/banco_ropa"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/icono_4" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Departamentos"
+        android:textColor="@color/negro"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <ImageView
+        android:id="@+id/parroquiales"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_5"
+        app:layout_constraintEnd_toStartOf="@+id/casos"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banco_alimentos"
+        app:srcCompat="@drawable/icono_5" />
+
+    <ImageView
+        android:id="@+id/casos"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_6"
+        app:layout_constraintEnd_toStartOf="@+id/emrg_desastres"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/parroquiales"
+        app:layout_constraintTop_toBottomOf="@+id/banco_medicamentos"
+        app:srcCompat="@drawable/icono_6" />
+
+    <ImageView
+        android:id="@+id/emrg_desastres"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_7"
+        app:layout_constraintEnd_toStartOf="@+id/posadas_peregrino"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/casos"
+        app:layout_constraintTop_toBottomOf="@+id/banco_ropa"
+        app:srcCompat="@drawable/icono_7" />
+
+    <ImageView
+        android:id="@+id/posadas_peregrino"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/emrg_desastres"
+        app:layout_constraintTop_toBottomOf="@+id/caritas_mty"
+        app:srcCompat="@drawable/icono_8" />
+
+    <ImageView
+        android:id="@+id/prom_humana"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
+        android:src="@drawable/icono_9"
+        app:layout_constraintEnd_toStartOf="@+id/serv_salud"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parroquiales"
+        app:srcCompat="@drawable/icono_9" />
+
+    <ImageView
+        android:id="@+id/serv_salud"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_10"
+        app:layout_constraintStart_toEndOf="@+id/prom_humana"
+        app:layout_constraintTop_toBottomOf="@+id/casos"
+        app:srcCompat="@drawable/icono_10" />
+
+    <ImageView
+        android:id="@+id/voluntarios"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/icono_11"
+        app:layout_constraintStart_toEndOf="@+id/serv_salud"
+        app:layout_constraintTop_toBottomOf="@+id/emrg_desastres"
+        app:srcCompat="@drawable/icono_11" />
+
+    <Button
+        android:id="@+id/aplicarButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Aplicar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.918" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

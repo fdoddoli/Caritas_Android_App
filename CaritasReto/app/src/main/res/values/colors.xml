@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="morado">#CE6DC2</color>
+    <color name="azul_claro1">#CBEDF3</color>
+    <color name="azul_claro2">#64CFE2</color>
+    <color name="azul_fuerte">#0098AE</color>
+    <color name="negro">#FF000000</color>
+    <color name="blanco">#FFFFFFFF</color>
+    <color name="grey">#F2F3F5</color>
+    <color name="grey_700">#808083</color>
+</resources>

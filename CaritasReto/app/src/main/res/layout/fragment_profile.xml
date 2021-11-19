@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azul_claro1"
+    tools:context=".controller.Home">
+
+    <TextView
+        android:id="@+id/textViewPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="PERFIL"
+        android:textColor="@color/negro"
+        android:textSize="11dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Fernando Doddoli"
+        android:textColor="@color/negro"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <TextView
+        android:id="@+id/numeroDonaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="12 Donaciones"
+        android:textColor="@color/negro"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="92dp"
+        android:layout_height="128dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/profile_icon_purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.983"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/settings_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.986"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039" />
+
+    <TextView
+        android:id="@+id/textViewActivas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Activas"
+        android:textColor="@color/negro"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/profileRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
+
+    <TextView
+        android:id="@+id/textViewPasadas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:text="Pasadas"
+        android:textColor="@color/grey_700"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/profileRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintStart_toEndOf="@+id/textViewActivas"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profileRecyclerView"
+        android:layout_width="367dp"
+        android:layout_height="505dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
