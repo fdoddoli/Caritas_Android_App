@@ -31,7 +31,7 @@ class filtros : Fragment() {
     lateinit var aplicarBtn : Button
 
     lateinit var myFragmentManager: FragmentManager
-    private val homeFragment = Home()
+    //private val homeFragment = Home()
 
     //Definir arreglo que guardará los tags de noticias a desplegar
     val filtro = mutableListOf<String>()
@@ -149,11 +149,12 @@ class filtros : Fragment() {
         val bundle = Bundle()
         bundle.putStringArrayList("departamentos", ArrayList(filtro))
 
-        aplicarBtn.setOnClickListener{
-            myFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, homeFragment).commit()
-        }
         //Cerrar filter
+//        aplicarBtn.setOnClickListener{
+//            myFragmentManager.beginTransaction()
+//                .replace(R.id.fragment_container, homeFragment).commit()
+//        }
+
     }
 
 
