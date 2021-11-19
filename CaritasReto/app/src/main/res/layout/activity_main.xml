@@ -7,15 +7,15 @@
     tools:context=".controller.MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blanco"
+        app:itemIconSize="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="@color/blanco"
-        app:menu="@menu/menu"
-        android:id="@+id/bottom_nav"
-        />
+        app:menu="@menu/menu" />
 
     <FrameLayout
         android:id="@+id/fragment_container"
