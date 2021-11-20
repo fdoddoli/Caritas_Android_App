@@ -9,14 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caritasreto.R
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 
 class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.ViewHolder>(){
     private val titles = arrayOf("10 Actividades Voluntarias Que Puedes Realizar","Con tus Donativos Diana Combatirá el Linfomano")
     private val details = arrayOf("Item one details","Item two details")
     private var images = intArrayOf(R.drawable.voluntarios,R.drawable.voluntarios )
+    private val verMasFragment = VerMas()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapterNoticias.ViewHolder {
+
+
         val v = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
         return ViewHolder(v)
     }
@@ -45,7 +49,7 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
             verMas.setOnClickListener{
                 val position : Int = adapterPosition
                 Toast.makeText(itemView.context, "POSITION: ${position}", Toast.LENGTH_LONG).show()
-            }
+
         }
     }
 
