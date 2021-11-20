@@ -1,12 +1,12 @@
 package com.example.caritasreto.controller
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,26 +20,30 @@ class Home : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var btnFilter: Button
     lateinit var myFragmentManager: FragmentManager
+    lateinit var debugbutton: Button
+    private var recyclerAdapterNoticias = RecyclerAdapterNoticias()
 
-    private val filterFragment = filtros()
-    var departamentos = arrayListOf<String>()
-
+    var departamentos = (arrayListOf<String>())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         myFragmentManager = parentFragmentManager
     }
 
+    // Lectura de los datos
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        arguments?.getStringArrayList("datos")?.let{
+            departamentos = it
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var bundle = Bundle()
 
-        departamentos = bundle.getStringArrayList("departamentos") as ArrayList<String>
-        Toast.makeText(context, "list" + departamentos[0], Toast.LENGTH_SHORT).show()
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -49,8 +53,11 @@ class Home : Fragment() {
         btnFilter = view.findViewById(R.id.filter_btn)
         layoutManager = LinearLayoutManager(getActivity())
         recyclerView.layoutManager = layoutManager
+        debugbutton = view.findViewById(R.id.debugbutton)
 
-        adapter = RecyclerAdapterNoticias()
+        recyclerAdapterNoticias.filtro = departamentos
+
+        adapter = recyclerAdapterNoticias
         recyclerView.adapter = adapter
 
         assignClickListeners()
@@ -58,12 +65,17 @@ class Home : Fragment() {
     }
 
     private fun assignClickListeners(){
+        val filterFragment = Filtros()
         btnFilter.setOnClickListener{
             myFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, filterFragment).commit()
         }
+        debugbutton.setOnClickListener{
+            if (!departamentos.isEmpty()) {
+                val toast = Toast.makeText(context, departamentos[0], 4)
+                toast.show()
+            }
+        }
     }
-
-
 
 }
