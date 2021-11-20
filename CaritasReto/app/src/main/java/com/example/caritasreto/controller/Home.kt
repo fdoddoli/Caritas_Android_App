@@ -62,10 +62,5 @@ class Home : Fragment() {
             myFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, filterFragment).commit()
         }
-
-
     }
-
-
-
 }
