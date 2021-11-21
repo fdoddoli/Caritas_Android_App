@@ -16,10 +16,10 @@
         <entry key="app/src/main/res/layout/donativo.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_filtros.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.11277173913043478" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_my_adapter.xml" value="0.175" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_ver_mas.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_ver_mas.xml" value="0.335" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.19166666666666668" />
       </map>
     </option>

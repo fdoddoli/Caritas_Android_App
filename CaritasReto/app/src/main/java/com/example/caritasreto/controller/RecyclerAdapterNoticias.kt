@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 
 class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.ViewHolder>(){
-    private val titles = arrayOf("10 Actividades Voluntarias Que Puedes Realizar","Con tus Donativos Diana Combatirá el Linfomano")
-    private val details = arrayOf("Item one details","Item two details")
-    private var images = intArrayOf(R.drawable.voluntarios,R.drawable.icono_1 )
+    private val titles = arrayOf("10 Actividades Voluntarias Que Puedes Realizar","Con tus Donativos Diana Combatirá el Linfomano","10 Actividades Voluntarias Que Puedes Realizar")
+    private val details = arrayOf("Item one details","Item two details", "Item three details")
+    private var images = intArrayOf(R.drawable.voluntarios,R.drawable.icono_1,R.drawable.voluntarios)
     var filtro = ArrayList<String>()
 
 
@@ -57,17 +57,10 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
         var itemImage: ImageView
         var itemTitle: TextView
         var itemDescription: TextView
-        var verMas: TextView
         init{
             itemImage = itemView.findViewById(R.id.Image)
             itemTitle = itemView.findViewById(R.id.Title)
             itemDescription = itemView.findViewById(R.id.Description)
-            verMas = itemView.findViewById(R.id.verMas)
-
-            verMas.setOnClickListener {
-                val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "POSITION: ${position}", Toast.LENGTH_LONG).show()
-            }
         }
     }
 
