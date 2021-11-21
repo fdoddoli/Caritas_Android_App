@@ -16,6 +16,7 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
     private val titles = arrayOf("10 Actividades Voluntarias Que Puedes Realizar","Con tus Donativos Diana Combatirá el Linfomano")
     private val details = arrayOf("Item one details","Item two details")
     private var images = intArrayOf(R.drawable.voluntarios,R.drawable.icono_1 )
+    var filtro = ArrayList<String>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapterNoticias.ViewHolder {

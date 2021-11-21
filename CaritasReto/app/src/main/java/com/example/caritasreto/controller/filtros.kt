@@ -1,6 +1,8 @@
 package com.example.caritasreto.controller
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +10,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.FragmentManager
-import androidx.viewpager2.widget.ViewPager2
 import com.example.caritasreto.R
 
 
-class filtros : Fragment() {
+class Filtros : Fragment() {
 
     //Definir variables de las imagenes del filtro
     lateinit var filterBancoAlimentos : ImageView
@@ -31,12 +32,18 @@ class filtros : Fragment() {
     lateinit var aplicarBtn : Button
 
     lateinit var myFragmentManager: FragmentManager
-    //private val homeFragment = Home()
 
     //Definir arreglo que guardará los tags de noticias a desplegar
-    val filtro = mutableListOf<String>()
+    val filtro = ArrayList<String>()
 
-
+    companion object {
+        @JvmStatic
+        fun newInstance(datos: ArrayList<String>) = Filtros().apply {
+            val args = Bundle().apply{
+                putStringArrayList("datos", filtro)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,17 +152,18 @@ class filtros : Fragment() {
     }
 
     private fun assignClickListeners(){
-        //Enviar arreglo de categorías a Home
-//        val bundle = Bundle()
-//        bundle.putStringArrayList("departamentos", ArrayList(filtro))
-
-        //Cerrar filter
-//        aplicarBtn.setOnClickListener{
-//            myFragmentManager.beginTransaction()
-//                .replace(R.id.fragment_container, homeFragment).commit()
-//        }
+        //Cerrar filter y pasar datos
+        aplicarBtn.setOnClickListener{
+            val homeFragment = Home()
+            val bundle = Bundle()
+            bundle.putStringArrayList("datos", filtro)
+            homeFragment.arguments = bundle
+            myFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, homeFragment).commit()
+        }
 
     }
+
 
 
 }
