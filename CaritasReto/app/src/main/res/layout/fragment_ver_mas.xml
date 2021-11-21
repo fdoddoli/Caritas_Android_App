@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image_verMas"
         android:layout_width="match_parent"
         android:layout_height="224dp"
         android:src="@drawable/voluntarios"
@@ -43,31 +43,35 @@
         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+        android:id="@+id/titulo_verMas"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
         android:text="TextView"
         android:textColor="@color/negro"
         android:textSize="18dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/image_verMas" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/details_verMas"
         android:layout_width="377dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
         android:text="TextView"
         android:textColor="@color/grey_700"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/titulo_verMas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
