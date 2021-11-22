@@ -67,15 +67,15 @@ class Home : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         recyclerAdapterNoticias.filtro = departamentos
-        recyclerAdapterNoticias.items = rssItems //Pasarle a recyclerAdapterNoticias los rssItems
+        if(rssItems.isEmpty()){
+            recyclerAdapterNoticias.items = rssItems //Pasarle a recyclerAdapterNoticias los rssItems
+            //RSS
+            val url = URL(RSS_FEED_LINK)
+            RssFeedFetcher(this).execute(url)
 
+        }
         adapter = recyclerAdapterNoticias
         recyclerView.adapter = adapter
-
-        //RSS
-        val url = URL(RSS_FEED_LINK)
-        RssFeedFetcher(this).execute(url)
-
         assignClickListeners()
 
     }

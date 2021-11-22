@@ -28,10 +28,12 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var position2 = position % 10
         if(items.size != 0){
-            holder.itemTitle.text = items[position].getTitulo()
-            holder.itemDescription.text = items[position].getDescipcion()
-            holder.itemImage.setImageResource(images[position])
+            println(items.size)
+            holder.itemTitle.text = items[position2].getTitulo()
+            holder.itemDescription.text = items[position2].getDescipcion()
+            holder.itemImage.setImageResource(images[position2])
         }
 
         //Click Listener on Item
