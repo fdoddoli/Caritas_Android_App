@@ -87,7 +87,7 @@ class Filtros : Fragment() {
             //Cambiar imagen
             filterBancoAlimentos.setImageResource(R.drawable.icono_1_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("banco_alimentos")
+            filtro.add("Banco de Alimentos")
         }
         filterBancoMedicamentos.setOnClickListener{
             //Cambiar imagen
@@ -99,25 +99,25 @@ class Filtros : Fragment() {
             //Cambiar imagen
             filterBancoRopa.setImageResource(R.drawable.icono_3_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("banco_ropa")
+            filtro.add("Banco de Ropa y Artículos Varios")
         }
         filterMty.setOnClickListener{
             //Cambiar imagen
             filterMty.setImageResource(R.drawable.icono_4_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("mty")
+            filtro.add("Cáritas de Monterrey")
         }
         filterParroquiales.setOnClickListener{
             //Cambiar imagen
             filterParroquiales.setImageResource(R.drawable.icono_5_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("parroquiales")
+            filtro.add("Cáritas Parroquiales")
         }
         filterCasos.setOnClickListener{
             //Cambiar imagen
             filterCasos.setImageResource(R.drawable.icono_6_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("casos")
+            filtro.add("Casos")
         }
         filterEmergencias.setOnClickListener{
             //Cambiar imagen
@@ -135,7 +135,7 @@ class Filtros : Fragment() {
             //Cambiar imagen
             filterPromHumana.setImageResource(R.drawable.icono_9_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("promocion_humana")
+            filtro.add("Promoción Humana")
         }
         filterServSalud.setOnClickListener{
             //Cambiar imagen

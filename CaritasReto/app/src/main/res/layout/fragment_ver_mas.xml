@@ -62,7 +62,7 @@
     <TextView
         android:id="@+id/details_verMas"
         android:layout_width="377dp"
-        android:layout_height="24dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
