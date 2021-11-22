@@ -16,7 +16,7 @@ import com.example.caritasreto.Model.Noticias
 class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.ViewHolder>(){
     private val titles = arrayOf("10 Actividades Voluntarias Que Puedes Realizar","Con tus Donativos Diana Combatirá el Linfomano","10 Actividades Voluntarias Que Puedes Realizar")
     private val details = arrayOf("Item one details","Item two details", "Item three details")
-    private var images = intArrayOf(R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios)
+    private var images = intArrayOf(R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios, R.drawable.voluntarios)
     var filtro = ArrayList<String>()
     var items = ArrayList<Noticias>()
     //var itemsFiltrados = items
@@ -55,7 +55,7 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
     }
 
     override fun getItemCount(): Int {
-        return titles.size
+        return items.size
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
