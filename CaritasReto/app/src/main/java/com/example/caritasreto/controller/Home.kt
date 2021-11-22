@@ -12,6 +12,15 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caritasreto.R
+import java.io.IOException
+import java.io.InputStream
+import java.lang.ref.WeakReference
+import java.net.HttpURLConnection
+import java.net.URL
+import android.os.AsyncTask
+import com.example.caritasreto.Model.Noticias
+import com.example.caritasreto.Model.RssParser
+
 
 class Home : Fragment() {
 
@@ -22,6 +31,11 @@ class Home : Fragment() {
     lateinit var myFragmentManager: FragmentManager
     private var recyclerAdapterNoticias = RecyclerAdapterNoticias()
 
+    //RSS
+    val RSS_FEED_LINK = "https://www.caritas.org.mx/feed/";
+    var rssItems = ArrayList<Noticias>()
+
+
     var departamentos = (arrayListOf<String>())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +43,7 @@ class Home : Fragment() {
         myFragmentManager = parentFragmentManager
     }
 
-    // Lectura de los datos
+    // Lectura de categorias para filtrar
     override fun onAttach(context: Context) {
         super.onAttach(context)
         arguments?.getStringArrayList("datos")?.let{
@@ -42,7 +56,6 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -54,9 +67,14 @@ class Home : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         recyclerAdapterNoticias.filtro = departamentos
+        recyclerAdapterNoticias.items = rssItems //Pasarle a recyclerAdapterNoticias los rssItems
 
         adapter = recyclerAdapterNoticias
         recyclerView.adapter = adapter
+
+        //RSS
+        val url = URL(RSS_FEED_LINK)
+        RssFeedFetcher(this).execute(url)
 
         assignClickListeners()
 
@@ -70,4 +88,44 @@ class Home : Fragment() {
         }
     }
 
+    fun updateRV(rssItemsL: List<Noticias>) {
+        if (rssItemsL != null && !rssItemsL.isEmpty()) {
+            rssItems.addAll(rssItemsL)
+            adapter?.notifyDataSetChanged()
+        }
+    }
+
+    class RssFeedFetcher(val context: Home) : AsyncTask<URL, Void, List<Noticias>>() {
+        val reference = WeakReference(context)
+        private var stream: InputStream? = null;
+        override fun doInBackground(vararg params: URL?): List<Noticias>? {
+            val connect = params[0]?.openConnection() as HttpURLConnection
+            connect.readTimeout = 8000
+            connect.connectTimeout = 8000
+            connect.requestMethod = "GET"
+            connect.connect();
+            val responseCode: Int = connect.responseCode;
+            var rssItems: List<Noticias>? = null
+            if (responseCode == 200) {
+                stream = connect.inputStream;
+                try {
+                    val parser = RssParser()
+                    rssItems = parser.parse(stream!!)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+            return rssItems
+        }
+        override fun onPostExecute(result: List<Noticias>?) {
+            super.onPostExecute(result)
+            if (result != null && !result.isEmpty()) {
+                reference.get()?.updateRV(result)
+            }
+        }
+    }
+    interface OnListFragmentInteractionListener {
+        // TODO: Update argument type and name
+        fun onListFragmentInteraction(item: Noticias?)
+    }
 }

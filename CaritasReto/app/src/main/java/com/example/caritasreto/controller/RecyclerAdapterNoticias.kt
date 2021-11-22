@@ -11,12 +11,15 @@ import com.example.caritasreto.R
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import com.example.caritasreto.Model.Noticias
 
 class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.ViewHolder>(){
     private val titles = arrayOf("10 Actividades Voluntarias Que Puedes Realizar","Con tus Donativos Diana Combatirá el Linfomano","10 Actividades Voluntarias Que Puedes Realizar")
     private val details = arrayOf("Item one details","Item two details", "Item three details")
-    private var images = intArrayOf(R.drawable.voluntarios,R.drawable.icono_1,R.drawable.voluntarios)
+    private var images = intArrayOf(R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios)
     var filtro = ArrayList<String>()
+    var items = ArrayList<Noticias>()
+    //var itemsFiltrados = items
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapterNoticias.ViewHolder {
@@ -25,9 +28,11 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemTitle.text = titles[position]
-        holder.itemDescription.text = details[position]
-        holder.itemImage.setImageResource(images[position])
+        if(items.size != 0){
+            holder.itemTitle.text = items[position].getTitulo()
+            holder.itemDescription.text = items[position].getDescipcion()
+            holder.itemImage.setImageResource(images[position])
+        }
 
         //Click Listener on Item
         //Pasamos arguments con bundle
@@ -39,8 +44,8 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
                 val activity = v!!.context as AppCompatActivity
                 val verMasFragment = VerMas()
                 val bundle = Bundle()
-                bundle.putString("titulo", titles[position])
-                bundle.putString("details", details[position])
+                bundle.putString("titulo", items[position].getTitulo())
+                bundle.putString("details", items[position].getDescipcion())
                 bundle.putInt("imageV", images[position])
                 verMasFragment.arguments = bundle
                 activity.supportFragmentManager.beginTransaction().replace(R.id.fragment_container, verMasFragment).addToBackStack(null).commit()
@@ -63,6 +68,10 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
             itemDescription = itemView.findViewById(R.id.Description)
         }
     }
+
+//    private fun filtrarItems(){
+//        itemsFiltrados = items.filter{filtro.indexOf(it.getCategoria()) != -1} as ArrayList<Noticias>
+//    }
 
 
 

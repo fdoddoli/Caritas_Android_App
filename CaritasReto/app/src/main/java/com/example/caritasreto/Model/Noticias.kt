@@ -1,34 +1,25 @@
 package com.example.caritasreto.Model
 
 class Noticias {
-    private var descripcion: String = "It takes array of particular type or mixed type or null parameters. Null parameters is used when there is a need to create empty instance of MutableList."
-    private var titulo: String = "Mutable Lists"
+    lateinit var description: String
+    lateinit var category: String
+    lateinit var pubDate: String
+    lateinit var link: String
+    lateinit var title: String
+
+
     private var image: Int = 0
 
     fun getDescipcion(): String{
-        return descripcion
-    }
-
-    fun setDescripcion(Descripcion: String){
-        descripcion = Descripcion
+        return description
     }
 
     fun getTitulo(): String{
-        return titulo
+        return title
     }
 
-    fun setTitulo(Titulo: String){
-        titulo = Titulo
+    fun getCategoria(): String{
+        return category
     }
-
-    fun getImage(): Int{
-        return image
-    }
-
-    fun setTitulo(Number: Int){
-        image = Number
-    }
-
-
 
 }
