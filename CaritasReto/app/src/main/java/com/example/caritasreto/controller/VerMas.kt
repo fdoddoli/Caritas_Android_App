@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caritasreto.R
 
@@ -20,6 +18,8 @@ class VerMas : Fragment() {
     lateinit var titulo: TextView
     lateinit var details: TextView
     lateinit var imagesTemp: IntArray
+    lateinit var backBtn: ImageButton
+    lateinit var myFragmentManager: FragmentManager
     var imageV = 0
     lateinit var image: ImageView
 
@@ -28,6 +28,7 @@ class VerMas : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        myFragmentManager = parentFragmentManager
     }
 
     // Lectura de los datos
@@ -60,5 +61,15 @@ class VerMas : Fragment() {
         titulo.setText(tituloTemp)
         details.setText(detailsTemp)
         image.setImageResource(imageV)
+        backBtn = view.findViewById(R.id.backBtnVerMas)
+        assignClickListeners()
+    }
+
+    fun assignClickListeners(){
+        val homeFragment = Home()
+        backBtn.setOnClickListener{
+            myFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, homeFragment).commit()
+        }
     }
 }
