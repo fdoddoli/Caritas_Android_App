@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -57,6 +58,7 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
             holder.itemTitle.text = this.listaFinal[position2].getTitulo()
             holder.itemDescription.text = this.listaFinal[position2].getDescipcion()
             holder.itemImage.setImageResource(images[position2])
+            holder.itemCategoria.setText(listaFinal[position2].getCategoria())
         }
 
         //Click Listener on Item
@@ -92,10 +94,12 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
         var itemImage: ImageView
         var itemTitle: TextView
         var itemDescription: TextView
+        var itemCategoria: Button
         init{
             itemImage = itemView.findViewById(R.id.Image)
             itemTitle = itemView.findViewById(R.id.Title)
             itemDescription = itemView.findViewById(R.id.Description)
+            itemCategoria = itemView.findViewById(R.id.categoria)
         }
     }
 
