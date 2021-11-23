@@ -20,20 +20,18 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
     var listaFiltrada = ArrayList<Noticias>()
     var listaFinal = ArrayList<Noticias>()
 
-    //var itemsFiltrados = items
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapterNoticias.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
+        listaFiltrada = filtrado(filtro, items)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var listaFiltrada = filtrado(filtro, items)
+
         Log.d("tamañolistaf", listaFiltrada.size.toString())
         for (datos in listaFiltrada){
             Log.d("datosfiltrados", datos.category)
         }
-
         var position2 = position % 10
         if (!filtro.isEmpty()) {
             Log.d("valor", filtro[0])
@@ -82,7 +80,12 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
     }
 
     override fun getItemCount(): Int {
-        return this.items.size
+        var listaFiltrada = filtrado(filtro, items)
+        if(listaFiltrada.isEmpty()){
+            return this.items.size
+        } else{
+            return listaFiltrada.size
+        }
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
