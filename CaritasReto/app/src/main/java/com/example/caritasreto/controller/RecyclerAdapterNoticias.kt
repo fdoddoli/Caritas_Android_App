@@ -1,6 +1,7 @@
 package com.example.caritasreto.controller
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,31 +9,53 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caritasreto.R
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
+import androidx.core.content.res.TypedArrayUtils
 import com.example.caritasreto.Model.Noticias
 
 class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.ViewHolder>(){
-    private val titles = arrayOf("10 Actividades Voluntarias Que Puedes Realizar","Con tus Donativos Diana Combatirá el Linfomano","10 Actividades Voluntarias Que Puedes Realizar")
-    private val details = arrayOf("Item one details","Item two details", "Item three details")
     private var images = intArrayOf(R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios,R.drawable.voluntarios, R.drawable.voluntarios)
     var filtro = ArrayList<String>()
     var items = ArrayList<Noticias>()
-    //var itemsFiltrados = items
-
+    var listaFiltrada = ArrayList<Noticias>()
+    var listaFinal = ArrayList<Noticias>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapterNoticias.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
+        listaFiltrada = filtrado(filtro, items)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        Log.d("tamañolistaf", listaFiltrada.size.toString())
+        for (datos in listaFiltrada){
+            Log.d("datosfiltrados", datos.category)
+        }
         var position2 = position % 10
-        if(items.size != 0){
-            println(items.size)
-            holder.itemTitle.text = items[position2].getTitulo()
-            holder.itemDescription.text = items[position2].getDescipcion()
+        if (!filtro.isEmpty()) {
+            Log.d("valor", filtro[0])
+        }
+        if (!items.isEmpty()){
+            Log.d("valor-lista", items[0].category)
+        }
+        if (!listaFiltrada.isEmpty()){
+            Log.d("valor-filtrado", listaFiltrada[0].category)
+        }
+
+        if(listaFiltrada.isEmpty()){
+            Log.d("conf", "Si esta vacia")
+            listaFinal = items
+        } else{
+            listaFinal = listaFiltrada
+            Log.d("size", listaFinal.size.toString())
+            position2 = listaFiltrada.size - 1
+        }
+
+        if(this.listaFinal.size != 0){
+            println(this.listaFinal.size)
+            holder.itemTitle.text = this.listaFinal[position2].getTitulo()
+            holder.itemDescription.text = this.listaFinal[position2].getDescipcion()
             holder.itemImage.setImageResource(images[position2])
         }
 
@@ -46,9 +69,9 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
                 val activity = v!!.context as AppCompatActivity
                 val verMasFragment = VerMas()
                 val bundle = Bundle()
-                bundle.putString("titulo", items[position].getTitulo())
-                bundle.putString("details", items[position].getDescipcion())
-                bundle.putInt("imageV", images[position])
+                bundle.putString("titulo", this@RecyclerAdapterNoticias.listaFinal[position2].getTitulo())
+                bundle.putString("details", this@RecyclerAdapterNoticias.listaFinal[position2].getDescipcion())
+                bundle.putInt("imageV", images[position2])
                 verMasFragment.arguments = bundle
                 activity.supportFragmentManager.beginTransaction().replace(R.id.fragment_container, verMasFragment).addToBackStack(null).commit()
             }
@@ -57,7 +80,12 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        var listaFiltrada = filtrado(filtro, items)
+        if(listaFiltrada.isEmpty()){
+            return this.items.size
+        } else{
+            return listaFiltrada.size
+        }
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -69,6 +97,18 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
             itemTitle = itemView.findViewById(R.id.Title)
             itemDescription = itemView.findViewById(R.id.Description)
         }
+    }
+
+    fun filtrado(lista1: ArrayList<String>, lista2: ArrayList<Noticias>): ArrayList<Noticias>{
+        var lista3: ArrayList<Noticias> = arrayListOf()
+        for (elements1 in lista1){
+            for (elements2 in lista2){
+                if (elements1 == elements2.category){
+                    lista3.add(elements2)
+                }
+            }
+        }
+        return lista3
     }
 
 //    private fun filtrarItems(){

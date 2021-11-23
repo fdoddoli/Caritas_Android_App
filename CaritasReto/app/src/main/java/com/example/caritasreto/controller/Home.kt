@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +17,7 @@ import java.lang.ref.WeakReference
 import java.net.HttpURLConnection
 import java.net.URL
 import android.os.AsyncTask
+import android.util.Log
 import com.example.caritasreto.Model.Noticias
 import com.example.caritasreto.Model.RssParser
 
@@ -30,6 +30,7 @@ class Home : Fragment() {
     lateinit var btnFilter: Button
     lateinit var myFragmentManager: FragmentManager
     private var recyclerAdapterNoticias = RecyclerAdapterNoticias()
+    var listaFiltrada = arrayListOf<Noticias>()
 
     //RSS
     val RSS_FEED_LINK = "https://www.caritas.org.mx/feed/";
@@ -64,11 +65,19 @@ class Home : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView)
         btnFilter = view.findViewById(R.id.filter_btn)
         layoutManager = LinearLayoutManager(getActivity())
+        if(!listaFiltrada.isEmpty()) {
+            Log.d("datos-filtrados", listaFiltrada[0].title)
+        }
+        if(listaFiltrada.isEmpty()) {
+            Log.d("datos-filtrados", "Esta vacia")
+        }
         recyclerView.layoutManager = layoutManager
-
-        recyclerAdapterNoticias.filtro = departamentos
+        if(!listaFiltrada.isEmpty()) {
+            Log.d("datos-filtrados", listaFiltrada[0].title)
+        }
         if(rssItems.isEmpty()){
             recyclerAdapterNoticias.items = rssItems //Pasarle a recyclerAdapterNoticias los rssItems
+            Log.d("tamaño", rssItems.size.toString())
             //RSS
             val url = URL(RSS_FEED_LINK)
             RssFeedFetcher(this).execute(url)
@@ -76,6 +85,8 @@ class Home : Fragment() {
         }
         adapter = recyclerAdapterNoticias
         recyclerView.adapter = adapter
+        recyclerAdapterNoticias.filtro = departamentos
+        listaFiltrada = filtrado(departamentos, rssItems)
         assignClickListeners()
 
     }
@@ -127,5 +138,21 @@ class Home : Fragment() {
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onListFragmentInteraction(item: Noticias?)
+    }
+    fun filtrado(lista1: ArrayList<String>, lista2: ArrayList<Noticias>): ArrayList<Noticias>{
+        var lista3: ArrayList<Noticias> = arrayListOf()
+        Log.d("tag3", "Si entro")
+        for (elements1 in lista1){
+            Log.d("tag4", elements1)
+            for (elements2 in lista2){
+                Log.d("tag5", lista2.size.toString())
+                if (elements1 == elements2.category){
+                    Log.d("tag", elements1)
+                    Log.d("tag2", elements2.category)
+                    lista3.add(elements2)
+                }
+            }
+        }
+        return lista3
     }
 }

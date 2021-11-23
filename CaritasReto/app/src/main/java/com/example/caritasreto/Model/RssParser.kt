@@ -8,7 +8,9 @@ import java.io.InputStream
 class RssParser {
     private val rssItems = ArrayList<Noticias>()
     private var rssItem : Noticias ?= null
-    private var text: String? = null
+    private var text: String = ""
+    private val expression = "<(\\\"[^\\\"]*\\\"|'[^']*'|[^'\\\">])*>".toRegex()
+    private var textFinal: String = ""
     fun parse(inputStream: InputStream):List<Noticias> {
         try {
             val factory = XmlPullParserFactory.newInstance()
@@ -31,15 +33,20 @@ class RssParser {
                         rssItem?.let { rssItems.add(it) }
                         foundItem = false
                     } else if ( foundItem && tagname.equals("title", ignoreCase = true)) {
-                        rssItem!!.title = text.toString()
+                        textFinal = expression.replace(text, "")
+                        rssItem!!.title = textFinal
                     } else if (foundItem && tagname.equals("link", ignoreCase = true)) {
-                        rssItem!!.link = text.toString()
+                        textFinal = expression.replace(text, "")
+                        rssItem!!.link = textFinal
                     } else if (foundItem && tagname.equals("pubDate", ignoreCase = true)) {
-                        rssItem!!.pubDate = text.toString()
+                        textFinal = expression.replace(text, "")
+                        rssItem!!.pubDate = textFinal
                     } else if (foundItem && tagname.equals("category", ignoreCase = true)) {
-                        rssItem!!.category = text.toString()
+                        textFinal = expression.replace(text, "")
+                        rssItem!!.category = textFinal
                     } else if (foundItem && tagname.equals("description", ignoreCase = true)) {
-                        rssItem!!.description = text.toString()
+                        textFinal = expression.replace(text, "")
+                        rssItem!!.description = textFinal
                     }
                 }
                 eventType = parser.next()
