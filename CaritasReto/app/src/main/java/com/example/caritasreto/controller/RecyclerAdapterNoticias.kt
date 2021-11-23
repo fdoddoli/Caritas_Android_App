@@ -28,31 +28,13 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        Log.d("tamañolistaf", listaFiltrada.size.toString())
-        for (datos in listaFiltrada){
-            Log.d("datosfiltrados", datos.category)
-        }
         var position2 = position % 10
-        if (!filtro.isEmpty()) {
-            Log.d("valor", filtro[0])
-        }
-        if (!items.isEmpty()){
-            Log.d("valor-lista", items[0].category)
-        }
-        if (!listaFiltrada.isEmpty()){
-            Log.d("valor-filtrado", listaFiltrada[0].category)
-        }
-
         if(listaFiltrada.isEmpty()){
-            Log.d("conf", "Si esta vacia")
             listaFinal = items
         } else{
             listaFinal = listaFiltrada
-            Log.d("size", listaFinal.size.toString())
-            position2 = listaFiltrada.size - 1
+            position2 = position % listaFiltrada.size
         }
-
         if(this.listaFinal.size != 0){
             println(this.listaFinal.size)
             holder.itemTitle.text = this.listaFinal[position2].getTitulo()
@@ -105,20 +87,13 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
 
     fun filtrado(lista1: ArrayList<String>, lista2: ArrayList<Noticias>): ArrayList<Noticias>{
         var lista3: ArrayList<Noticias> = arrayListOf()
-        for (elements1 in lista1){
-            for (elements2 in lista2){
-                if (elements1 == elements2.category){
-                    lista3.add(elements2)
+        for (i in lista1.indices){
+            for (j in lista2.indices){
+                if (lista1[i] == lista2[j].category){
+                    lista3.add(lista2[j])
                 }
             }
         }
         return lista3
     }
-
-//    private fun filtrarItems(){
-//        itemsFiltrados = items.filter{filtro.indexOf(it.getCategoria()) != -1} as ArrayList<Noticias>
-//    }
-
-
-
 }
