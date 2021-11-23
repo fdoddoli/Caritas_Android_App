@@ -28,7 +28,12 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(homeFragment)
-                R.id.profile -> replaceFragment(loginFragment)
+                R.id.profile -> if(!loginFragment.getVerif()){
+                    replaceFragment(loginFragment)
+                }
+                else{
+                    replaceFragment(profileFragment)
+                }
                 //R.id.filtros -> replaceFragment(filterFragment)
             }
             true
