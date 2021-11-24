@@ -12,6 +12,7 @@
         android:id="@+id/filtro_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="FILTRO"
         android:textColor="@color/negro"
         android:textSize="14dp"
@@ -21,7 +22,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <TextView
         android:id="@+id/departamentos_titulo"
@@ -93,7 +94,7 @@
         android:text="Banco Medico"
         android:textAlignment="center"
         android:textSize="11sp"
-        app:layout_constraintEnd_toStartOf="@+id/banco_ropa_titulo"
+        app:layout_constraintEnd_toStartOf="@id/banco_ropa_titulo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/banco_alimentos_titulo"
         app:layout_constraintTop_toBottomOf="@+id/banco_medicamentos" />
@@ -323,5 +324,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.918" />
+
+    <ImageButton
+        android:id="@+id/backBtnVerMas"
+        android:layout_width="32dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/back_icon_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
