@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.fragment.app.FragmentManager
 import com.example.caritasreto.R
@@ -27,6 +28,7 @@ class Filtros : Fragment() {
     lateinit var filterPromHumana : ImageView
     lateinit var filterServSalud : ImageView
     lateinit var filterVoluntarios : ImageView
+    lateinit var backBtn: ImageButton
 
     //Definir variable para boton de aplicar
     lateinit var aplicarBtn : Button
@@ -76,6 +78,7 @@ class Filtros : Fragment() {
         filterVoluntarios = view.findViewById(R.id.voluntarios)
 
         aplicarBtn = view.findViewById(R.id.aplicarButton)
+        backBtn = view.findViewById(R.id.backBtnVerMas)
 
         assignClickListenersIcons()
         assignClickListeners()
@@ -153,11 +156,15 @@ class Filtros : Fragment() {
 
     private fun assignClickListeners(){
         //Cerrar filter y pasar datos
+        val homeFragment = Home()
+        val bundle = Bundle()
         aplicarBtn.setOnClickListener{
-            val homeFragment = Home()
-            val bundle = Bundle()
             bundle.putStringArrayList("datos", filtro)
             homeFragment.arguments = bundle
+            myFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, homeFragment).commit()
+        }
+        backBtn.setOnClickListener{
             myFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, homeFragment).commit()
         }
