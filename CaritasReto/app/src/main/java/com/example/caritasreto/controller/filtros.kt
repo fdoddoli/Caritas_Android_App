@@ -123,13 +123,13 @@ class Filtros : Fragment() {
             //Cambiar imagen
             filterEmergencias.setImageResource(R.drawable.icono_7_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("emergencias")
+            filtro.add("Emergencias por Desastres")
         }
         filterPosadasPeregrino.setOnClickListener{
             //Cambiar imagen
             filterPosadasPeregrino.setImageResource(R.drawable.icono_8_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("posadas")
+            filtro.add("Posada del Pregrino")
         }
         filterPromHumana.setOnClickListener{
             //Cambiar imagen
@@ -141,13 +141,13 @@ class Filtros : Fragment() {
             //Cambiar imagen
             filterServSalud.setImageResource(R.drawable.icono_10_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("salud")
+            filtro.add("Servicios de Salud")
         }
         filterVoluntarios.setOnClickListener{
             //Cambiar imagen
             filterVoluntarios.setImageResource(R.drawable.icono_11_2)
             //Agregar categoría al arreglo de filtro
-            filtro.add("voluntarios")
+            filtro.add("Voluntarios")
         }
     }
 
