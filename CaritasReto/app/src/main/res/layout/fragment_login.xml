@@ -9,7 +9,7 @@
     android:id="@+id/logincontainer">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/filtro_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/departamentos_titulo"
         android:layout_width="220dp"
         android:layout_height="51dp"
         android:layout_marginTop="32dp"
@@ -30,7 +30,7 @@
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/filtro_titulo" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -51,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/departamentos_titulo" />
 
     <EditText
         android:id="@+id/editTextPassword"
