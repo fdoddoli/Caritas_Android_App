@@ -25,7 +25,7 @@ class Login : Fragment(){
     lateinit var loginM: LoginM
     lateinit var myFragmentManager: FragmentManager
     lateinit var msjInvalid: TextView
-    lateinit var backBtnLogin: ImageButton
+//    lateinit var backBtnLogin: ImageButton
     private var verifLogin: Boolean = false
 
     private val profileFragment = Profile()
@@ -50,7 +50,7 @@ class Login : Fragment(){
         loginButton = view.findViewById(R.id.loginbutton)
         msjInvalid = view.findViewById(R.id.msjInvalid)
         loginM = LoginM()
-        backBtnLogin = view.findViewById(R.id.backBtnLogin)
+//        backBtnLogin = view.findViewById(R.id.backBtnLogin)
         assignClickListeners()
     }
 
@@ -67,10 +67,10 @@ class Login : Fragment(){
                 msjInvalid.setVisibility(View.VISIBLE)
             }
         }
-        backBtnLogin.setOnClickListener {
-            myFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, homeFragment).commit()
-        }
+//        backBtnLogin.setOnClickListener {
+//            myFragmentManager.beginTransaction()
+//                .replace(R.id.fragment_container, homeFragment).commit()
+//        }
     }
 
     fun setVerif(bool: Boolean){
