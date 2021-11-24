@@ -36,9 +36,9 @@
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/blanco"
         android:ems="10"
         android:hint="E-mail"
@@ -57,9 +57,9 @@
         android:id="@+id/editTextPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/blanco"
         android:ems="10"
         android:hint="Password"
@@ -101,16 +101,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
-
-    <ImageButton
-        android:id="@+id/backBtnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_icon_white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
