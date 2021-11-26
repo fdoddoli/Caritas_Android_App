@@ -34,6 +34,7 @@ class RecyclerAdapterDonativos: RecyclerView.Adapter<RecyclerAdapterDonativos.Vi
         val bundle = Bundle()
         bundle.putString("numberD", items.size.toString())
         Profile.arguments = bundle
+
     }
 
     override fun getItemCount(): Int {

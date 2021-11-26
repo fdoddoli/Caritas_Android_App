@@ -17,7 +17,7 @@ class Profile : Fragment() {
     private var adapter: RecyclerView.Adapter<RecyclerAdapterDonativos.ViewHolder> ? = null
     lateinit var recyclerView: RecyclerView
     lateinit var numberDonativos: TextView
-    lateinit var donativosTemp: String
+    var donativosTemp = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +25,7 @@ class Profile : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        println("hey")
         arguments?.getString("numberD")?.let{
             donativosTemp = it
         }
@@ -41,7 +42,13 @@ class Profile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         numberDonativos = view.findViewById(R.id.numberDonativos)
-        numberDonativos.setText(donativosTemp)
+        if(donativosTemp == ""){
+            numberDonativos.setText("2")
+        }
+        else{
+            numberDonativos.setText(donativosTemp)
+        }
+
         recyclerView = view.findViewById(R.id.profileRecyclerView)
         layoutManager = LinearLayoutManager(getActivity())
         recyclerView.layoutManager = layoutManager
