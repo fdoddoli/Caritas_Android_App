@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caritasreto.Model.Donaciones
-import com.example.caritasreto.Model.Noticias
 import com.example.caritasreto.R
 
 class RecyclerAdapterDonativos: RecyclerView.Adapter<RecyclerAdapterDonativos.ViewHolder>(){
