@@ -17,14 +17,12 @@ Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o
 1. Ir a la pagina oficial de XAMP y descargar la version 8.0.12 (https://www.apachefriends.org/es/index.html)
 2. Entrar al directorio: Aplications/XAMPP/xamppfiles/etc/extra/ y abrir el archivo "httpd-xampp.conf"
 3. En la linea número 13: cambiar "Require local" a "Require all granted"
-4. Entrar a Applications/XAMPP/xamppfiles/htdocs y meter la carpeta "caritasdb"
-5. Entrar a http://localhost/phpmyadmin/, importar la base de datos 'CaritasAppDB' y establecer contraseña del usuario root como 'root'
-
-
+4. Entrar a Applications/XAMPP/xamppfiles/htdocs y meter la carpeta "caritasdb" (se encuentra en este repositorio)
+5. Entrar a http://localhost/phpmyadmin/, importar la base de datos 'CaritasAppDB.sql' (se encuentra en este repositorio) y establecer contraseña del usuario root como 'root'
 
 ## Autores: 
-1. Cristóbal Alberto Escamilla Sada - Desarrollo y conexion con la base de datos
-2. Juan Manuel Gómez Ortiz - Desarrollo de back end
+1. Cristóbal Alberto Escamilla Sada - Desarrollo y conexion de la base de datos
+2. Juan Manuel Gómez Ortiz - Desarrollo de front end
 3. Lucas Eduardo Idígoras - Lectura de datos desde la pagina de Cáritas
 4. Andrés Guerra Ochoa - 
 5. Fernando Doddoli Lankenau - Desarrollo de front end						
