@@ -21,13 +21,13 @@ class RecyclerAdapterDonativos(listaDonativos: ArrayList<Donativo>): RecyclerVie
     }
 
     override fun onBindViewHolder(holder: RecyclerAdapterDonativos.ViewHolder, position: Int) {
-        holder.itemFrecuencia.setText(donativos.get(position).donativo)
-        holder.itemCantidad.setText(donativos.get(position).aportacion.toString() + " MXN")
+        holder.itemInfoDonativo.setText(donativos.get(position).donativo + " - " + donativos.get(position).aportacion.toString() + " MXN")
+        holder.itemFecha.setText(donativos.get(position).fecha)
         if(donativos.get(position).actividad == "act") {
-            holder.itemDepartamento.setImageResource(iconoDonacionActiva)
+            holder.itemIcon.setImageResource(iconoDonacionActiva)
         }
         else {
-            holder.itemDepartamento.setImageResource(iconoDonacionInactiva)
+            holder.itemIcon.setImageResource(iconoDonacionInactiva)
         }
     }
 
@@ -36,14 +36,14 @@ class RecyclerAdapterDonativos(listaDonativos: ArrayList<Donativo>): RecyclerVie
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var itemCantidad: TextView
-        var itemFrecuencia: TextView
-        var itemDepartamento: ImageView
+        var itemInfoDonativo: TextView
+        var itemFecha: TextView
+        var itemIcon: ImageView
 
         init{
-            itemDepartamento = itemView.findViewById(R.id.donativoIcon)
-            itemCantidad = itemView.findViewById(R.id.donativoCantidad)
-            itemFrecuencia = itemView.findViewById(R.id.donativoFrecuencia)
+            itemIcon = itemView.findViewById(R.id.donativoIcon)
+            itemFecha = itemView.findViewById(R.id.fecha)
+            itemInfoDonativo = itemView.findViewById(R.id.donativoFrecuencia)
         }
     }
 

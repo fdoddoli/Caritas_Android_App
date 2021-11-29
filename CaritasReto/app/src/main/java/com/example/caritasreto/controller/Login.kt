@@ -1,6 +1,5 @@
 package com.example.caritasreto.controller
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,11 +15,6 @@ import androidx.fragment.app.FragmentManager
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.caritasreto.Model.Database.Aportacion
-import com.example.caritasreto.Model.Database.Donacion
-import com.example.caritasreto.Model.Database.Donativo
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 import org.json.JSONArray
 
 class Login : Fragment(){
@@ -68,25 +62,14 @@ class Login : Fragment(){
             val bundle = Bundle()
             val queue = Volley.newRequestQueue(requireContext())
 
-            val donacionesRequest = StringRequest(Request.Method.GET,
-                "http://$ipAdd:80/caritasdb/donaciones.php?user=$username",
-                { response ->
-                    val jsonArray = JSONArray(response)
-                    bundle.putString("jsonDonaciones", jsonArray.toString())
-                    profileFragment.arguments = bundle
-                    myFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, profileFragment).commit()
-                },
-                { error ->
-                    Log.d("Error", error.toString())
-
-                })
-
             val donativosRequest = StringRequest(Request.Method.GET,
                 "http://$ipAdd:80/caritasdb/donativos.php?user=$username",
                 { response ->
                     val jsonArray = JSONArray(response)
                     bundle.putString("jsonDonativos", jsonArray.toString())
+                    profileFragment.arguments = bundle
+                    myFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, profileFragment).commit()
                 },
                 { error ->
                     Log.d("Error", error.toString())
@@ -114,7 +97,6 @@ class Login : Fragment(){
                         setPrefs()
                         queue.add(aportacionesRequest)
                         queue.add(donativosRequest)
-                        queue.add(donacionesRequest)
                     } else {
                         msjInvalid.setVisibility(View.VISIBLE)
                     }
