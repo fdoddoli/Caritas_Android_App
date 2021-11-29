@@ -13,10 +13,20 @@ Por último, tenemos la sección de donaciones e inicio de sesión. La app cuent
 4.	Insertar el url del repositorio 
 5.	Hacer click en clonar 
 Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o usar un dispositivo físico de Android, conectado directamente a su computadora. 
+## Configuracion para la bade de datos
+1. Ir a la pagina oficial de XAMP y descargar la version 8.0.12 (https://www.apachefriends.org/es/index.html)
+2. Entrar al directorio: Aplications/XAMPP/xamppfiles/etc/extra/ y abrir el archivo "httpd-xampp.conf"
+3. En la linea número 13: cambiar "Require local" a "Require all granted"
+4. Entrar a Applications/XAMPP/xamppfiles/htdocs y meter la carpeta "caritasdb"
+5. Entrar a http://localhost/phpmyadmin/, importar la base de datos 'CaritasAppDB' y establecer contraseña del usuario root como 'root'
+
+
 
 ## Autores: 
-Cristóbal Alberto Escamilla Sada					
-Juan Manuel Gómez Ortiz						
-Lucas Eduardo Idígoras 							
-Andrés Guerra Ochoa                                         			
-Fernando Doddoli Lankenau                              			
+1. Cristóbal Alberto Escamilla Sada - Desarrollo y conexion con la base de datos
+2. Juan Manuel Gómez Ortiz - Desarrollo de back end
+3. Lucas Eduardo Idígoras - Lectura de datos desde la pagina de Cáritas
+4. Andrés Guerra Ochoa - 
+5. Fernando Doddoli Lankenau - Desarrollo de front end						
+                                        			
+                             			
