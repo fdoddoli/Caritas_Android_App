@@ -19,7 +19,7 @@ Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o
 3. En la linea número 13: cambiar "Require local" a "Require all granted"
 4. Entrar a Applications/XAMPP/xamppfiles/htdocs y colocar la carpeta "caritasdb" (se encuentra en este repositorio)
 5. Entrar a http://localhost/phpmyadmin/, importar la base de datos 'CaritasAppDB.sql' (se encuentra en este repositorio) y establecer contraseña del usuario root como 'root'
-6. Dentro de la aplicación de Android, en la línea 28 del archivo "Login.kt", cambiar la dirección IP a la dirección ip de su máquina
+6. Dentro de la aplicación de Android, en la línea 28 del archivo "Login.kt", cambiar la dirección IP a la dirección ip de su máquina. Es importante que no se utilice la dirección de localhost (127.0.0.1) ya que Android Studio tiende a tener problemas con esta IP, de preferencia utilizar la dirección local del dispositivo.
 
 ## Autores: 
 1. Cristóbal Alberto Escamilla Sada - Desarrollo y conexion de la base de datos
