@@ -1,34 +1,34 @@
 package com.example.caritasreto.controller
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.caritasreto.R
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.example.caritasreto.Model.LoginM
-import kotlin.properties.Delegates
-
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONArray
 
 class Login : Fragment(){
 
-    lateinit var passwordET: EditText
-    lateinit var userET: EditText
+    lateinit var usernameET: EditText
+    lateinit var passET: EditText
     lateinit var loginButton: Button
-    lateinit var loginM: LoginM
     lateinit var myFragmentManager: FragmentManager
     lateinit var msjInvalid: TextView
-//    lateinit var backBtnLogin: ImageButton
-    private var verifLogin: Boolean = false
 
+    private val ipAdd = "192.168.15.33"
     private val profileFragment = Profile()
+    private var username : String = ""
+    private var pass : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,40 +45,76 @@ class Login : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userET = view.findViewById(R.id.editTextTextEmailAddress)
-        passwordET = view.findViewById((R.id.editTextPassword))
+
+        usernameET = view.findViewById(R.id.editTextTextEmailAddress)
+        passET = view.findViewById((R.id.editTextPassword))
         loginButton = view.findViewById(R.id.loginbutton)
         msjInvalid = view.findViewById(R.id.msjInvalid)
-        loginM = LoginM()
-//        backBtnLogin = view.findViewById(R.id.backBtnLogin)
         assignClickListeners()
     }
 
 
     private fun assignClickListeners(){
-        var homeFragment = Home()
         loginButton.setOnClickListener{
-            if (loginM.verificador(userET.text.toString(), passwordET.text.toString())) {
-                verifLogin = true
-                myFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, profileFragment).commit()
-            }
-            else{
-                msjInvalid.setVisibility(View.VISIBLE)
-            }
+            username = usernameET.text.toString()
+            pass = passET.text.toString()
+
+            val bundle = Bundle()
+            val queue = Volley.newRequestQueue(requireContext())
+
+            val donativosRequest = StringRequest(Request.Method.GET,
+                "http://$ipAdd:80/caritasdb/donativos.php?user=$username",
+                { response ->
+                    val jsonArray = JSONArray(response)
+                    bundle.putString("jsonDonativos", jsonArray.toString())
+                    profileFragment.arguments = bundle
+                    myFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, profileFragment).commit()
+                },
+                { error ->
+                    Log.d("Error", error.toString())
+
+                })
+
+            val aportacionesRequest = StringRequest(Request.Method.GET,
+                "http://$ipAdd:80/caritasdb/aportaciones.php?user=$username",
+                { response ->
+                    val jsonArray = JSONArray(response)
+                    if (jsonArray.length() != 0) {
+                        bundle.putString("jsonAportacion", jsonArray[0].toString())
+                    }
+                },
+                { error ->
+                    Log.d("Error", error.toString())
+
+                })
+
+            val loginRequest = StringRequest(Request.Method.GET,
+                "http://$ipAdd:80/caritasdb/login.php?user=$username&pass=$pass",
+                { response ->
+                    val jsonArray = JSONArray(response)
+                    if (jsonArray.length() != 0) {
+                        setPrefs()
+                        queue.add(aportacionesRequest)
+                        queue.add(donativosRequest)
+                    } else {
+                        msjInvalid.setVisibility(View.VISIBLE)
+                    }
+                },
+                { error ->
+                    Log.d("Error", error.toString())
+
+                })
+            queue.add(loginRequest)
         }
-//        backBtnLogin.setOnClickListener {
-//            myFragmentManager.beginTransaction()
-//                .replace(R.id.fragment_container, homeFragment).commit()
-//        }
     }
 
-    fun setVerif(bool: Boolean){
-        verifLogin = bool
+    private fun setPrefs(){
+        val prefs = activity?.getSharedPreferences("prefs", AppCompatActivity.MODE_PRIVATE)
+        val editor = prefs?.edit()
+        editor?.apply {
+            putString("UID", username)
+            putString("IPADD", ipAdd)
+        }
     }
-
-    fun getVerif(): Boolean{
-        return verifLogin
-    }
-
 }

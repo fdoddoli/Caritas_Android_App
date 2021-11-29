@@ -9,32 +9,32 @@ import com.example.caritasreto.R
 import com.google.android.material.tabs.TabLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.serialization.descriptors.PrimitiveKind
 
 class MainActivity : AppCompatActivity() {
-    //Referencia los objetos que estamos utilizando
     private val homeFragment = Home()
     private val profileFragment = Profile()
-//    private val filterFragment = filtros()
     private val loginFragment = Login()
 
+    lateinit var uid:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         replaceFragment(homeFragment)
+        loadPrefs()
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav)
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(homeFragment)
-                R.id.profile -> if(!loginFragment.getVerif()){
+                R.id.profile -> if(uid == ""){
                     replaceFragment(loginFragment)
                 }
                 else{
                     replaceFragment(profileFragment)
                 }
-                //R.id.filtros -> replaceFragment(filterFragment)
             }
             true
         }
@@ -44,5 +44,10 @@ class MainActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
+    }
+
+    private fun loadPrefs(){
+        val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
+        uid = prefs.getString("UID", "").toString()
     }
 }
