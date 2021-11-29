@@ -36,7 +36,6 @@ class RecyclerAdapterNoticias: RecyclerView.Adapter<RecyclerAdapterNoticias.View
             position2 = position % listaFiltrada.size
         }
         if(this.listaFinal.size != 0){
-            println(this.listaFinal.size)
             holder.itemTitle.text = this.listaFinal[position2].getTitulo()
             holder.itemDescription.text = this.listaFinal[position2].getDescipcion()
             holder.itemImage.setImageResource(images[position2])

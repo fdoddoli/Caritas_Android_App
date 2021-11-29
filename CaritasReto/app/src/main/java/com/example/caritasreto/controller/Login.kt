@@ -10,11 +10,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.caritasreto.R
 import androidx.fragment.app.FragmentManager
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.caritasreto.Model.Database.Aportacion
+import com.example.caritasreto.Model.Database.Donacion
+import com.example.caritasreto.Model.Database.Donativo
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.json.JSONArray
@@ -60,36 +64,75 @@ class Login : Fragment(){
         loginButton.setOnClickListener{
             username = usernameET.text.toString()
             pass = passET.text.toString()
+
+            val bundle = Bundle()
             val queue = Volley.newRequestQueue(requireContext())
+
+            val donacionesRequest = StringRequest(Request.Method.GET,
+                "http://$ipAdd:80/caritasdb/donaciones.php?user=$username",
+                { response ->
+                    val jsonArray = JSONArray(response)
+                    bundle.putString("jsonDonaciones", jsonArray.toString())
+                    profileFragment.arguments = bundle
+                    myFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, profileFragment).commit()
+                },
+                { error ->
+                    Log.d("Error", error.toString())
+
+                })
+
+            val donativosRequest = StringRequest(Request.Method.GET,
+                "http://$ipAdd:80/caritasdb/donativos.php?user=$username",
+                { response ->
+                    val jsonArray = JSONArray(response)
+                    bundle.putString("jsonDonativos", jsonArray.toString())
+                },
+                { error ->
+                    Log.d("Error", error.toString())
+
+                })
+
+            val aportacionesRequest = StringRequest(Request.Method.GET,
+                "http://$ipAdd:80/caritasdb/aportaciones.php?user=$username",
+                { response ->
+                    val jsonArray = JSONArray(response)
+                    if (jsonArray.length() != 0) {
+                        bundle.putString("jsonAportacion", jsonArray[0].toString())
+                    }
+                },
+                { error ->
+                    Log.d("Error", error.toString())
+
+                })
+
             val loginRequest = StringRequest(Request.Method.GET,
                 "http://$ipAdd:80/caritasdb/login.php?user=$username&pass=$pass",
                 { response ->
                     val jsonArray = JSONArray(response)
                     if (jsonArray.length() != 0) {
-                        setUid()
-                        myFragmentManager.beginTransaction()
-                            .replace(R.id.fragment_container, profileFragment).commit()
+                        setPrefs()
+                        queue.add(aportacionesRequest)
+                        queue.add(donativosRequest)
+                        queue.add(donacionesRequest)
                     } else {
-                        println("INVALID")
-                        println(username)
-                        println(pass)
-                        println(ipAdd)
                         msjInvalid.setVisibility(View.VISIBLE)
                     }
                 },
                 { error ->
-                    Log.d("tag", error.toString())
+                    Log.d("Error", error.toString())
 
                 })
             queue.add(loginRequest)
         }
     }
 
-    private fun setUid(){
-        val prefs = activity?.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    private fun setPrefs(){
+        val prefs = activity?.getSharedPreferences("prefs", AppCompatActivity.MODE_PRIVATE)
         val editor = prefs?.edit()
         editor?.apply {
             putString("UID", username)
+            putString("IPADD", ipAdd)
         }
     }
 }
