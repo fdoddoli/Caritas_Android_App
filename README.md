@@ -23,7 +23,7 @@ Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o
 
 ## Autores: 
 1. Cristóbal Alberto Escamilla Sada - Desarrollo y conexion de la base de datos
-2. Juan Manuel Gómez Ortiz - Desarrollo de front end
+2. Juan Manuel Gómez Ortiz - Desarrollo de front end / conexión a bd mediante servidor
 3. Lucas Eduardo Idígoras - Lectura de datos desde la pagina de Cáritas
 4. Andrés Guerra Ochoa - 
 5. Fernando Doddoli Lankenau - Desarrollo de front end						
