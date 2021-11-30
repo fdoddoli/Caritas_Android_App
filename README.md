@@ -9,7 +9,7 @@ Por último, tenemos la sección de donaciones e inicio de sesión. La app cuent
 ## Instrucciones de instalación 
 1.	Copiar el url del repositorio para poder clonarlo. 
 2.	Abrir Android estudio 
-3.	Hacer click en la pestaña de archivo > nuevo > “Project from versión control”
+3.	Hacer click en la pestaña de archivo > “Get from VCS”
 4.	Insertar el url del repositorio 
 5.	Hacer click en clonar 
 Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o usar un dispositivo físico de Android, conectado directamente a su computadora. 
