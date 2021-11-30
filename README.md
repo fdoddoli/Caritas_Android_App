@@ -17,13 +17,13 @@ Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o
 1. Ir a la pagina oficial de XAMP y descargar la version 8.0.12 (https://www.apachefriends.org/es/index.html)
 2. Entrar al directorio: Aplications/XAMPP/xamppfiles/etc/extra/ y abrir el archivo "httpd-xampp.conf"
 3. En la linea número 13: cambiar "Require local" a "Require all granted"
-4. Entrar a Applications/XAMPP/xamppfiles/htdocs y meter la carpeta "caritasdb" (se encuentra en este repositorio)
+4. Entrar a Applications/XAMPP/xamppfiles/htdocs y extraer el zib "caritasdb" y colocar su carpeta (se encuentra en este repositorio)
 5. Entrar a http://localhost/phpmyadmin/, importar la base de datos 'CaritasAppDB.sql' (se encuentra en este repositorio) y establecer contraseña del usuario root como 'root'
-6. Dentro de la aplicación de Android, en la línea 28 del archivo "Login.kt", cambiar la dirección IP a la dirección ip de su máquina
+6. Dentro de la aplicación de Android, en la línea 28 del archivo "Login.kt", cambiar la dirección IP a la dirección ip de su máquina. Es importante que no se utilice la dirección de localhost (127.0.0.1) ya que Android Studio tiende a tener problemas con esta IP, de preferencia utilizar la dirección local del dispositivo.
 
 ## Autores: 
 1. Cristóbal Alberto Escamilla Sada - Desarrollo y conexion de la base de datos
-2. Juan Manuel Gómez Ortiz - Desarrollo de front end
+2. Juan Manuel Gómez Ortiz - Desarrollo de front end / conexión a bd mediante servidor
 3. Lucas Eduardo Idígoras - Lectura de datos desde la pagina de Cáritas
 4. Andrés Guerra Ochoa - 
 5. Fernando Doddoli Lankenau - Desarrollo de front end						
