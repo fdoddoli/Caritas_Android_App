@@ -14,10 +14,10 @@ Por último, tenemos la sección de donaciones e inicio de sesión. La app cuent
 5.	Hacer click en clonar 
 Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o usar un dispositivo físico de Android, conectado directamente a su computadora. 
 ## Configuracion para la base de datos
-1. Ir a la pagina oficial de XAMP y descargar la version 8.0.12 (https://www.apachefriends.org/es/index.html)
+1. Ir a la pagina oficial de XAMPP y descargar la version 8.0.12 (https://www.apachefriends.org/es/index.html)
 2. Entrar al directorio: Aplications/XAMPP/xamppfiles/etc/extra/ y abrir el archivo "httpd-xampp.conf"
 3. En la linea número 13: cambiar "Require local" a "Require all granted"
-4. Entrar a Applications/XAMPP/xamppfiles/htdocs y extraer el zib "caritasdb" y colocar su carpeta (se encuentra en este repositorio)
+4. Entrar a Applications/XAMPP/xamppfiles/htdocs y extraer el zip "caritasdb" y colocar su carpeta (se encuentra en este repositorio)
 5. Entrar a http://localhost/phpmyadmin/, importar la base de datos 'CaritasAppDB.sql' (se encuentra en este repositorio) y establecer contraseña del usuario root como 'root'
 6. Dentro de la aplicación de Android, en la línea 28 del archivo "Login.kt", cambiar la dirección IP a la dirección ip de su máquina. Es importante que no se utilice la dirección de localhost (127.0.0.1) ya que Android Studio tiende a tener problemas con esta IP, de preferencia utilizar la dirección local del dispositivo.
 
