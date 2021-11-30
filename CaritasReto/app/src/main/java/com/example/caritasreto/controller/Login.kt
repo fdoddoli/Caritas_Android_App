@@ -1,5 +1,6 @@
 package com.example.caritasreto.controller
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -110,11 +111,10 @@ class Login : Fragment(){
     }
 
     private fun setPrefs(){
-        val prefs = activity?.getSharedPreferences("prefs", AppCompatActivity.MODE_PRIVATE)
-        val editor = prefs?.edit()
-        editor?.apply {
-            putString("UID", username)
-            putString("IPADD", ipAdd)
+        val prefs = activity?.getSharedPreferences("prefs", Context.MODE_PRIVATE) ?: return
+        with(prefs.edit()) {
+            putBoolean("lOGGEDIN", true)
+            commit()
         }
     }
 }

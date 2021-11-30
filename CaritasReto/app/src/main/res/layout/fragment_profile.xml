@@ -86,7 +86,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/backgroundr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.307"
@@ -114,6 +114,15 @@
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textoAportacion"
         app:layout_constraintTop_toBottomOf="@+id/textoDonaciones" />
+
+    <ImageView
+        android:id="@+id/logout"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="132dp"
+        android:src="@drawable/icono_logout"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/textViewPerfil" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

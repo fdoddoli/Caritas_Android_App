@@ -1,11 +1,14 @@
 package com.example.caritasreto.controller
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caritasreto.Model.Database.Aportacion
@@ -24,9 +27,13 @@ class Profile : Fragment() {
     lateinit var nombre : TextView
     lateinit var numDonaciones: TextView
     lateinit var aportacionTotal: TextView
+    lateinit var btnLogoout : ImageView
+    lateinit var myFragmentManager: FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        myFragmentManager = parentFragmentManager
+
     }
 
     override fun onCreateView(
@@ -46,6 +53,9 @@ class Profile : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         assignIds(view)
+        assignListeners()
+
+        println(activity?.getSharedPreferences("prefs", Context.MODE_PRIVATE)?.getBoolean("LOGGEDIN", false))
 
         nombre.text = aportacion.nombre_completo
         numDonaciones.text = aportacion.cantidad_donaciones.toString()
@@ -56,11 +66,19 @@ class Profile : Fragment() {
         nombre = view.findViewById(R.id.nombre)
         numDonaciones = view.findViewById(R.id.numDonaciones)
         aportacionTotal = view.findViewById(R.id.aportacionTotal)
+        btnLogoout = view.findViewById(R.id.logout)
 
         recyclerView = view.findViewById(R.id.profileRecyclerView)
         adapter = RecyclerAdapterDonativos(donativos)
         layoutManager = LinearLayoutManager(getActivity())
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
+    }
+
+    fun assignListeners(){
+        btnLogoout.setOnClickListener {
+            myFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, Login()).commit()
+        }
     }
 }

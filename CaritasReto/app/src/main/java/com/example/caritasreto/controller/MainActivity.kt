@@ -1,5 +1,6 @@
 package com.example.caritasreto.controller
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -16,24 +17,23 @@ class MainActivity : AppCompatActivity() {
     private val profileFragment = Profile()
     private val loginFragment = Login()
 
-    lateinit var uid:String
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         replaceFragment(homeFragment)
-        loadPrefs()
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav)
         bottomNavigationView.setOnItemSelectedListener {
+            val session = checkLogin()
+            println(session)
             when(it.itemId){
                 R.id.home -> replaceFragment(homeFragment)
-                R.id.profile -> if(uid == ""){
-                    replaceFragment(loginFragment)
+                R.id.profile -> if(session){
+                    replaceFragment(profileFragment)
                 }
                 else{
-                    replaceFragment(profileFragment)
+                    replaceFragment(loginFragment)
                 }
             }
             true
@@ -46,8 +46,7 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    private fun loadPrefs(){
-        val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
-        uid = prefs.getString("UID", "").toString()
+    private fun checkLogin() : Boolean{
+        return getSharedPreferences("prefs", Context.MODE_PRIVATE).getBoolean("LOGGEDIN", false)
     }
 }
