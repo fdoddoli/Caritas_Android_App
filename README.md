@@ -13,7 +13,7 @@ Por último, tenemos la sección de donaciones e inicio de sesión. La app cuent
 4.	Insertar el url del repositorio 
 5.	Hacer click en clonar 
 Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o usar un dispositivo físico de Android, conectado directamente a su computadora. 
-## Configuracion para la bade de datos
+## Configuracion para la base de datos
 1. Ir a la pagina oficial de XAMP y descargar la version 8.0.12 (https://www.apachefriends.org/es/index.html)
 2. Entrar al directorio: Aplications/XAMPP/xamppfiles/etc/extra/ y abrir el archivo "httpd-xampp.conf"
 3. En la linea número 13: cambiar "Require local" a "Require all granted"
