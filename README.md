@@ -22,10 +22,10 @@ Recuerde que para ejecutar la aplicación necesita tener un emulador instalado o
 6. Dentro de la aplicación de Android, en la línea 28 del archivo "Login.kt", cambiar la dirección IP a la dirección ip de su máquina. Es importante que no se utilice la dirección de localhost (127.0.0.1) ya que Android Studio tiende a tener problemas con esta IP, de preferencia utilizar la dirección local del dispositivo.
 
 ## Autores: 
-1. Cristóbal Alberto Escamilla Sada - Desarrollo y conexion de la base de datos
+1. Cristóbal Alberto Escamilla Sada - Desarrollo de perfil y base de datos
 2. Juan Manuel Gómez Ortiz - Desarrollo de front end / conexión a bd mediante servidor
 3. Lucas Eduardo Idígoras - Lectura de datos desde la pagina de Cáritas
-4. Andrés Guerra Ochoa - 
+4. Andrés Guerra Ochoa - Pruebas
 5. Fernando Doddoli Lankenau - Desarrollo de front end						
                                         			
                              			
