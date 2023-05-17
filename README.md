@@ -1,27 +1,9 @@
 # Introduction
 Developed a mobile application for Android in Kotlin for Cáritas de Monterrey foundation, to showcase what they do and invite people to donate.
 
-# Preview 
+# App Demonstration
 
-**Sign in**
-
-![Iniciar Sesión](https://github.com/fdoddoli/Caritas_Android_App/assets/58672371/04142224-db88-4910-ac56-5321ae6caceb)
-
-**Home**
-
-![Home–Feed](https://github.com/fdoddoli/Caritas_Android_App/assets/58672371/71fe4b37-c0c8-4f8e-8b33-f7b3acecddad)
-
-**Filter**
-
-![Filtro](https://github.com/fdoddoli/Caritas_Android_App/assets/58672371/747d05f9-91ae-4088-aa8f-83feaf21cf51)
-
-**Event**
-
-![Evento-Expandido](https://github.com/fdoddoli/Caritas_Android_App/assets/58672371/ecb7edc3-30a4-4fe7-9e14-c2f2d2ea4cf6)
-
-**Profile**
-
-![Perfil](https://github.com/fdoddoli/Caritas_Android_App/assets/58672371/3de574ff-8ed3-439d-a52d-d858eac1d43b)
+https://drive.google.com/file/d/1qyFBJrLQl0Qs57cD8eziXDhtDP95T5it/view?usp=sharing
 
 # App Structure
 
